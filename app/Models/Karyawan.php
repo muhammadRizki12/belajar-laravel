@@ -11,6 +11,7 @@ class Karyawan extends Model
 
     public function posisis() {
         return $this->belongsTo(Posisi::class, 'posisi_id', 'id');
+        
     }
 
     // Yang boleh diisi

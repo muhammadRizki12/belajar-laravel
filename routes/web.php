@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\PosisiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,9 @@ use App\Http\Controllers\KaryawanController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Basic Route
 // Route::get('/test', function () {
@@ -29,6 +30,9 @@ Route::get('/', function () {
 // Route Argument
 // Route::view('/test', 'test', ['nama' => 'udin', 'usia' => 20]);
 
+
+
+
 // Route dengan parameter
 Route::get('/test/{id}', function($id) {
     return view('test', ['id' => $id]);
@@ -36,6 +40,7 @@ Route::get('/test/{id}', function($id) {
 
 // Karyawan
 // Route::prefix('project')->group(function() {
+    Route::get('/', [KaryawanController::class, 'index']);
     Route::get('/karyawan-add', [KaryawanController::class, 'addKaryawan']);
     Route::post('/karyawan', [KaryawanController::class, 'saveKaryawan']);
     Route::get('/karyawan-edit/{id}', [KaryawanController::class, 'editKaryawan']);
@@ -43,6 +48,14 @@ Route::get('/test/{id}', function($id) {
     Route::get('/karyawan-delete/{id}', [KaryawanController::class, 'deleteKaryawan']);
     Route::delete('/karyawan/{id}', [KaryawanController::class, 'destroyKaryawan']);
     Route::get('/karyawan', [KaryawanController::class, 'index']);
+
+    // Posisi
+    Route::get('/posisi', [PosisiController::class, 'index']);
+    Route::get('/posisi-add', [PosisiController::class, 'add']);
+    Route::post('/posisi', [PosisiController::class, 'save']);
+    Route::get('/posisi-edit/{id}', [PosisiController::class, 'edit']);
+    Route::put('/posisi/{id}', [PosisiController::class, 'update']);
+    Route::delete('/posisi/{id}', [PosisiController::class, 'destroy']);
 
 
 // });
